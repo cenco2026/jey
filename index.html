@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dulce Tentación | Pastelería Artesanal Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* === CSS VARIABLES === */
+:root {
+  --pink: #FF6FAE;
+  --orange: #FFB84D;
+  --mint: #A8E6CF;
+  --bg: #FFF8F2;
+  --chocolate: #6B4226;
+  --white: #FFFFFF;
+  --gradient: linear-gradient(135deg, #FF6FAE, #FFB84D);
+  --gradient-soft: linear-gradient(135deg, rgba(255,111,174,0.12), rgba(255,184,77,0.12));
+  --shadow-sm: 0 2px 12px rgba(107,66,38,0.08);
+  --shadow-md: 0 8px 30px rgba(107,66,38,0.12);
+  --shadow-lg: 0 16px 50px rgba(107,66,38,0.16);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --font-title: 'Poppins', sans-serif;
+  --font-body: 'Nunito Sans', sans-serif;
+  --font-deco: 'Pacifico', cursive;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--chocolate);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; font-family: var(--font-body); }
+
+/* === UTILITY === */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 12px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #9a7b6a;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-primary {
+  background: var(--gradient);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,111,174,0.35); }
+.btn-secondary {
+  background: var(--white);
+  color: var(--pink);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid var(--pink);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-secondary:hover { background: var(--pink); color: var(--white); transform: translateY(-3px); }
+
+/* === HEADER === */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all 0.4s;
+}
+.header.scrolled {
+  background: rgba(255,248,242,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(107,66,38,0.08);
+  padding: 10px 0;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: var(--font-deco);
+  font-size: 1.8rem;
+  color: var(--pink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+}
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-links a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--chocolate);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--pink); }
+.nav-links a:hover::after { width: 100%; }
+.btn-cotizar {
+  background: var(--gradient);
+  color: var(--white);
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,111,174,0.3); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 8px;
+}
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: var(--chocolate);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255,248,242,0.97);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--chocolate);
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,111,174,0.08) 0%, rgba(255,184,77,0.06) 50%, rgba(168,230,207,0.08) 100%);
+}
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+.hero-blob-1 { width: 500px; height: 500px; background: rgba(255,111,174,0.25); top: -100px; right: -100px; }
+.hero-blob-2 { width: 400px; height: 400px; background: rgba(255,184,77,0.2); bottom: -50px; left: -100px; animation-delay: -3s; }
+.hero-blob-3 { width: 300px; height: 300px; background: rgba(168,230,207,0.25); top: 40%; left: 30%; animation-delay: -5s; }
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-text h1 {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--chocolate);
+}
+.hero-text h1 span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-text p {
+  font-size: 1.2rem;
+  color: #9a7b6a;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-cake-display {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: heroFloat 6s ease-in-out infinite;
+  box-shadow: 0 30px 80px rgba(255,111,174,0.25);
+  border: 6px solid rgba(255,111,174,0.2);
+}
+.hero-cake-display::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 0.15;
+}
+.cake-emoji {
+  font-size: 10rem;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+  animation: cakeRotate 10s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.cake-emoji img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  background: transparent;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes cakeRotate {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.05); }
+}
+.hero-badge {
+  position: absolute;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  animation: badgeFloat 4s ease-in-out infinite;
+}
+.hero-badge-1 { top: 20px; right: -20px; animation-delay: -1s; }
+.hero-badge-2 { bottom: 40px; left: -30px; animation-delay: -2s; }
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* === PRODUCTS === */
+.products { padding: 100px 0; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+.product-img {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.product-img-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  transition: transform 0.5s;
+}
+.product-card:hover .product-img-inner { transform: scale(1.1); }
+.product-img-inner.tortas { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+.product-img-inner.cupcakes { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+.product-img-inner.cheesecakes { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+.product-img-inner.box { background: linear-gradient(135deg, #fce4ec, #f3e5f5); }
+.product-img-inner.postres { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
+.product-info { padding: 24px; }
+.product-info h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.product-info p {
+  font-size: 0.9rem;
+  color: #9a7b6a;
+  margin-bottom: 16px;
+}
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+}
+.product-price {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--pink);
+}
+.product-price small { font-size: 0.75rem; font-weight: 400; color: #9a7b6a; }
+.btn-whatsapp {
+  background: #25D366;
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+
+/* === CATALOG CALCULATOR === */
+.catalog-calculator {
+  margin-top: 60px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.catalog-calculator h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 32px;
+  color: var(--chocolate);
+}
+
+/* Catalog Consultation Note */
+.catalog-consultation-note {
+  margin-top: 40px;
+  text-align: center;
+  padding: 24px;
+  background: var(--gradient-soft);
+  border-radius: var(--radius);
+  border: 2px dashed var(--pink);
+  overflow: hidden;
+}
+.catalog-consultation-note p {
+  font-size: 1.43rem;
+  color: var(--chocolate);
+  margin: 0;
+  display: flex;
+  width: max-content;
+  gap: 56px;
+  white-space: nowrap;
+  animation: consultationScroll 22s linear infinite;
+}
+.catalog-consultation-note strong {
+  color: var(--pink);
+  font-weight: 700;
+}
+.catalog-consultation-note:hover p {
+  animation-play-state: paused;
+}
+@keyframes consultationScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 28px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalog-consultation-note p {
+    width: auto;
+    white-space: normal;
+    animation: none;
+  }
+  .catalog-consultation-note p span + span {
+    display: none;
+  }
+}
+.calculator-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.calculator-option {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 32px 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.calculator-option:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.calc-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 16px;
+}
+.calculator-option h4 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--chocolate);
+}
+.calculator-option p {
+  font-size: 0.95rem;
+  color: #9a7b6a;
+}
+
+/* === CATALOG FILTERS === */
+.catalog-view-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 1;
+}
+.filter-btn {
+  background: var(--white);
+  color: var(--chocolate);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+}
+.filter-btn:hover {
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+.filter-btn.active {
+  background: var(--gradient);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(255,111,174,0.3);
+}
+
+/* === VIEW TOGGLE === */
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  background: var(--white);
+  padding: 8px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-sm);
+}
+.view-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--chocolate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.view-btn:hover {
+  background: var(--bg);
+}
+.view-btn.active {
+  background: var(--gradient);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(255,111,174,0.3);
+}
+
+/* === CATALOG CONTENT === */
+.catalog-content {
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+/* === GALLERY VIEW (Default) === */
+/* === GALLERY VIEW === */
+.catalog-content.modo-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.gallery-category-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  margin-top: 12px;
+  border-bottom: 2px solid var(--gradient);
+  background: linear-gradient(135deg, rgba(255,111,174,0.05), rgba(255,184,77,0.05));
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.gallery-cat-icon {
+  font-size: 2.5rem;
+}
+
+.gallery-cat-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex: 1;
+}
+
+.gallery-cat-pdf {
+  padding: 8px 16px;
+  background: var(--white);
+  color: var(--chocolate);
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+}
+
+.gallery-cat-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--gradient);
+  color: var(--white);
+}
+
+/* Gallery Product Cards */
+.gallery-product-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-card-image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  transition: height 0.4s ease, padding 0.4s ease, background 0.4s ease;
+}
+
+.gallery-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.gallery-card-image-vertical {
+  padding: 0;
+}
+
+.gallery-card-image-vertical img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.gallery-product-card:hover .gallery-card-image {
+  height: auto;
+  padding: 0;
+  background: var(--white);
+}
+
+.gallery-product-card:hover .gallery-card-image img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  transform: scale(1);
+  border-radius: 0;
+}
+
+.gallery-product-card:hover .gallery-card-image-vertical img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  transform: scale(1);
+}
+
+/* Overlay con zoom al hacer hover */
+.gallery-card-image::after {
+  content: '🔍';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-product-card:hover .gallery-card-image::after {
+  opacity: 0;
+}
+
+.gallery-product-card:hover .gallery-card-image {
+  cursor: pointer;
+}
+
+.gallery-card-emoji {
+  font-size: 5rem;
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  transition: all 0.4s ease;
+}
+
+.gallery-card-emoji::before {
+  content: attr(data-icon);
+}
+
+.gallery-product-card:hover .gallery-card-emoji {
+  background: linear-gradient(135deg, #ffe8f0, #ffd4e8);
+  transform: scale(1.02);
+}
+
+.gallery-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gallery-card-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--chocolate);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.gallery-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #8B7D6B;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+  white-space: pre-line;
+}
+
+.catalog-detail-list {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  list-style: disc;
+  white-space: normal;
+}
+.catalog-detail-list li {
+  margin-bottom: 4px;
+}
+
+.gallery-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0e6df;
+}
+
+.gallery-card-price {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--pink);
+  line-height: 1.3;
+  white-space: pre-line;
+  margin-top: 12px;
+  display: block;
+}
+
+.gallery-card-price span {
+  display: block;
+  margin-bottom: 0.27rem;
+}
+
+.gallery-card-btn {
+  padding: 8px 16px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.gallery-card-btn:hover {
+  background: #20BA5C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .catalog-content.modo-galeria {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  
+  .gallery-category-separator {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .gallery-cat-title {
+    font-size: 1.3rem;
+  }
+  
+  .gallery-card-image,
+  .gallery-card-emoji {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-content.modo-galeria {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-card-image,
+  .gallery-card-emoji {
+    height: 220px;
+  }
+  
+  .gallery-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .gallery-card-btn {
+    text-align: center;
+  }
+}
+
+/* Empty message when no category selected */
+.catalog-empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: #8B7D6B;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.catalog-category {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.catalog-category.hiding,
+.gallery-product-card.hiding,
+.gallery-category-separator.hiding {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* === LIST VIEW === */
+.catalog-content.modo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.catalog-content.modo-lista .catalog-category {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s ease;
+}
+.catalog-content.modo-lista .catalog-category:hover {
+  box-shadow: var(--shadow-md);
+}
+.catalog-content.modo-lista .category-header {
+  background: var(--gradient);
+  color: var(--white);
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.catalog-content.modo-lista .category-header h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0;
+}
+.catalog-content.modo-lista .category-icon {
+  font-size: 2rem;
+  margin-right: 12px;
+}
+.catalog-content.modo-lista .category-toggle {
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+.catalog-content.modo-lista .category-toggle.open {
+  transform: rotate(180deg);
+}
+.catalog-content.modo-lista .category-products {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.catalog-content.modo-lista .category-products.open {
+  max-height: 3000px;
+}
+.catalog-content.modo-lista .product-list {
+  padding: 20px;
+}
+.catalog-content.modo-lista .product-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #f0e6df;
+  transition: all 0.3s;
+  align-items: flex-start;
+}
+.catalog-content.modo-lista .product-item:last-child {
+  border-bottom: none;
+}
+.catalog-content.modo-lista .product-item:hover {
+  background: var(--bg);
+  transform: translateX(5px);
+}
+.catalog-content.modo-lista .product-item::before {
+  content: attr(data-icon);
+  font-size: 3rem;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-soft);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.catalog-content.modo-lista .product-image {
+  flex-shrink: 0;
+  width: 120px;
+  height: 160px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.catalog-content.modo-lista .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-sm);
+}
+.catalog-content.modo-lista .product-image-vertical img {
+  object-fit: cover;
+}
+.catalog-content.modo-lista .product-item:hover .product-image {
+  width: 180px;
+  height: auto;
+}
+.catalog-content.modo-lista .product-item:hover .product-image img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  transform: scale(1);
+  border-radius: 0;
+}
+
+.catalog-content.modo-lista .product-item:hover .product-image-vertical img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  transform: scale(1);
+}
+
+.catalog-content.modo-lista .product-image[data-icon] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: var(--gradient-soft);
+  height: 160px;
+  transition: all 0.4s ease;
+}
+.catalog-content.modo-lista .product-image[data-icon]::before {
+  content: attr(data-icon);
+}
+.catalog-content.modo-lista .product-item:hover .product-image[data-icon] {
+  height: auto;
+  min-height: 160px;
+}
+.catalog-content.modo-lista .product-image-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: var(--gradient-soft);
+  height: 160px;
+  transition: all 0.4s ease;
+}
+.catalog-content.modo-lista .product-image-emoji::before {
+  content: attr(data-icon);
+}
+.catalog-content.modo-lista .product-item:hover .product-image-emoji {
+  height: auto;
+  min-height: 160px;
+}
+.catalog-content.modo-lista .product-item-content {
+  flex: 1;
+}
+.catalog-content.modo-lista .product-item h4 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--chocolate);
+}
+.catalog-content.modo-lista .product-item p,
+.catalog-content.modo-lista .product-item-desc {
+  font-size: 0.95rem;
+  color: #9a7b6a;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.catalog-content.modo-lista .product-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.catalog-content.modo-lista .product-price-range {
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--pink);
+  font-size: 0.9rem;
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+.catalog-content.modo-lista .product-price-range span {
+  display: block;
+  margin-bottom: 0.27rem;
+}
+.catalog-content.modo-lista .product-item .btn-whatsapp {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.catalog-content.modo-lista .category-pdf-btn {
+  display: block;
+  margin: 16px 20px 20px;
+  background: var(--bg);
+  color: var(--chocolate);
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.catalog-content.modo-lista .category-pdf-btn:hover {
+  border-color: var(--pink);
+  background: var(--white);
+  transform: translateY(-2px);
+}
+
+/* === FILTER ANIMATIONS === */
+.catalog-category {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.catalog-category.hiding {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .catalog-view-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .catalog-filters {
+    gap: 8px;
+  }
+  .filter-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+  .view-toggle {
+    align-self: center;
+  }
+  
+  /* List view responsive */
+  .catalog-content.modo-lista .product-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .catalog-content.modo-lista .product-image,
+  .catalog-content.modo-lista .product-image-emoji {
+    width: 100%;
+    height: 180px;
+  }
+  .catalog-content.modo-lista .product-item-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* === GALLERY === */
+.gallery { padding: 100px 0; }
+
+/* Gallery Filters */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.gallery-filter-btn {
+  background: var(--white);
+  color: var(--chocolate);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.gallery-filter-btn:hover {
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+
+.gallery-filter-btn.active {
+  background: var(--gradient);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(255,111,174,0.3);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 968px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Gallery Item */
+.gallery-item {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-item.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-item-inner {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+}
+
+.gallery-item-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-inner img {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+}
+
+.gallery-item.croquembouche-card:hover .gallery-item-inner img,
+.gallery-item.decoraciones-especiales-card:hover .gallery-item-inner img {
+  object-fit: contain;
+  transform: scale(1);
+  background: var(--white);
+}
+
+/* Hover Overlay */
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(107,66,38,0.8) 0%, rgba(107,66,38,0.4) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+  padding: 20px;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-item-overlay-text {
+  color: var(--white);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 16px;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay-text {
+  transform: translateY(0);
+}
+
+.gallery-item-overlay-btn {
+  background: var(--white);
+  color: var(--pink);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.gallery-item:hover .gallery-item-overlay-btn {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.gallery-item-overlay-btn:hover {
+  background: var(--pink);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox.active {
+  display: flex;
+  animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: lightboxZoomIn 0.4s ease;
+}
+
+@keyframes lightboxZoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: var(--white);
+  color: var(--chocolate);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.lightbox-close:hover {
+  background: var(--pink);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  color: var(--chocolate);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.lightbox-nav:hover {
+  background: var(--white);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: -70px;
+}
+
+.lightbox-next {
+  right: -70px;
+}
+
+@media (max-width: 768px) {
+  .lightbox {
+    padding: 20px;
+  }
+  
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .lightbox-prev {
+    left: 10px;
+  }
+  
+  .lightbox-next {
+    right: 10px;
+  }
+  
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+  }
+}
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox.active { display: flex; }
+.lightbox-content {
+  font-size: 12rem;
+  animation: lightboxIn 0.3s ease;
+}
+.lightbox-content img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+@keyframes lightboxIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* === PROMOCIONES DEL DIA - KINETIC CAROUSEL === */
+.daily-promos {
+  padding: 110px 0;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255,111,174,0.18), transparent 28%),
+    radial-gradient(circle at 88% 18%, rgba(255,184,77,0.20), transparent 30%),
+    linear-gradient(135deg, rgba(255,248,242,0.96), rgba(255,232,240,0.78));
+}
+.daily-promos::before,
+.daily-promos::after {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.38;
+  pointer-events: none;
+}
+.daily-promos::before {
+  left: -140px;
+  top: 120px;
+  background: rgba(168,230,207,0.7);
+  animation: promoBlob 9s ease-in-out infinite;
+}
+.daily-promos::after {
+  right: -120px;
+  bottom: 80px;
+  background: rgba(255,111,174,0.45);
+  animation: promoBlob 11s ease-in-out infinite reverse;
+}
+@keyframes promoBlob {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(34px,-28px,0) scale(1.08); }
+}
+.daily-promos .container {
+  position: relative;
+  z-index: 1;
+}
+.promo-carousel-shell {
+  position: relative;
+  padding: 24px 74px 36px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.62);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.75);
+}
+.promo-carousel {
+  overflow: hidden;
+  border-radius: 26px;
+}
+.promo-track {
+  display: flex;
+  gap: 22px;
+  will-change: transform;
+  transition: transform 820ms cubic-bezier(.18,.84,.22,1);
+}
+.promo-slide {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
+  transform: translateY(18px) scale(.92) rotate(-1.5deg);
+  opacity: .72;
+  transition: transform 820ms cubic-bezier(.18,.84,.22,1), opacity 520ms ease, filter 520ms ease;
+  filter: saturate(.9) brightness(.96);
+}
+.promo-slide.is-focus {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+  filter: saturate(1.08) brightness(1.03);
+}
+.promo-slide.is-near {
+  opacity: .9;
+  transform: translateY(8px) scale(.97) rotate(1deg);
+}
+.promo-card {
+  height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0);
+  box-shadow: 0 18px 42px rgba(107,66,38,0.13);
+}
+.promo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.09) translateX(var(--promo-parallax, 0px));
+  transition: transform 900ms cubic-bezier(.18,.84,.22,1), filter 360ms ease;
+}
+.promo-card:hover img {
+  transform: scale(1.17) translateX(var(--promo-parallax, 0px));
+  filter: brightness(1.08);
+}
+.promo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(107,66,38,0.72), rgba(107,66,38,0.12) 54%, transparent),
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.35), transparent 28%);
+}
+.promo-ribbon {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 800;
+  font-size: .86rem;
+  box-shadow: 0 10px 24px rgba(255,111,174,0.28);
+}
+.promo-card-caption {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2;
+  color: var(--white);
+  transform: translateY(10px);
+  transition: transform 420ms ease;
+}
+.promo-card:hover .promo-card-caption {
+  transform: translateY(0);
+}
+.promo-card-caption h3 {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 14px rgba(0,0,0,.25);
+}
+.promo-card-caption span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: rgba(255,255,255,.92);
+}
+.promo-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: var(--chocolate);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
+}
+.promo-arrow:hover {
+  color: var(--white);
+  background: var(--gradient);
+  transform: translateY(-50%) scale(1.08);
+}
+.promo-arrow.prev { left: 18px; }
+.promo-arrow.next { right: 18px; }
+.promo-progress {
+  height: 5px;
+  margin: 26px auto 0;
+  width: min(420px, 72%);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(107,66,38,0.12);
+}
+.promo-progress-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: var(--gradient);
+  border-radius: inherit;
+}
+@keyframes promoProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.promo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2200;
+  padding: 42px;
+  background: rgba(35,20,11,.92);
+  align-items: center;
+  justify-content: center;
+}
+.promo-lightbox.active {
+  display: flex;
+  animation: lightboxFadeIn .28s ease;
+}
+.promo-lightbox img {
+  max-width: 88vw;
+  max-height: 86vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.5);
+}
+.promo-lightbox-close,
+.promo-lightbox-nav {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--chocolate);
+  box-shadow: var(--shadow-md);
+  transition: all .3s ease;
+}
+.promo-lightbox-close {
+  top: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  font-size: 1.4rem;
+}
+.promo-lightbox-nav {
+  top: 50%;
+  width: 54px;
+  height: 54px;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+.promo-lightbox-close:hover,
+.promo-lightbox-nav:hover {
+  background: var(--pink);
+  color: var(--white);
+}
+.promo-lightbox-nav.prev { left: 28px; }
+.promo-lightbox-nav.next { right: 28px; }
+@media (max-width: 980px) {
+  .promo-slide { flex-basis: calc((100% - 22px) / 2); }
+  .promo-card { height: 380px; }
+}
+@media (max-width: 640px) {
+  .daily-promos { padding: 82px 0; }
+  .promo-carousel-shell { padding: 18px 18px 32px; }
+  .promo-slide { flex-basis: 100%; }
+  .promo-card { height: 420px; }
+  .promo-arrow {
+    top: auto;
+    bottom: -26px;
+    width: 48px;
+    height: 48px;
+  }
+  .promo-arrow.prev { left: calc(50% - 58px); }
+  .promo-arrow.next { right: calc(50% - 58px); }
+  .promo-progress { margin-top: 42px; width: 82%; }
+  .promo-lightbox { padding: 18px; }
+  .promo-lightbox-nav { width: 44px; height: 44px; }
+  .promo-lightbox-nav.prev { left: 10px; }
+  .promo-lightbox-nav.next { right: 10px; }
+}
+
+/* === EVENTS === */
+.events { padding: 100px 0; background: var(--gradient-soft); }
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.event-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+.event-card:hover::before { transform: scaleX(1); }
+.event-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.event-emoji { font-size: 3.5rem; margin-bottom: 16px; }
+.event-card h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.event-card p { font-size: 0.9rem; color: #9a7b6a; }
+.event-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  transition: transform 0.4s ease;
+}
+.event-card:hover .event-image {
+  transform: scale(1.05);
+}
+.event-image-logo {
+  object-fit: contain;
+  background: var(--gradient-soft);
+  padding: 18px;
+}
+
+/* === TESTIMONIALS === */
+.testimonials { padding: 100px 0; }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.testimonial-card {
+  min-width: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.testimonial-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+}
+.testimonial-image-card {
+  padding: 0;
+  overflow: hidden;
+  min-height: 350px;
+}
+.testimonial-full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.testimonial-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gradient);
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.testimonial-stars { color: #FFB84D; font-size: 1.3rem; margin-bottom: 16px; letter-spacing: 4px; }
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #7a5e4f;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.testimonial-name { font-weight: 700; font-family: var(--font-title); }
+.testimonial-product { font-size: 0.85rem; color: var(--pink); }
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e0d5cf;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+.carousel-dot.active { background: var(--pink); transform: scale(1.2); }
+
+/* === STATS === */
+.stats {
+  padding: 80px 0;
+  background: var(--gradient);
+  position: relative;
+}
+.stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+.stat-item { text-align: center; color: var(--white); }
+.stat-number {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 1rem; opacity: 0.9; }
+
+/* === WHATSAPP FLOAT === */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+}
+.whatsapp-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #25D366;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+  transition: transform 0.3s;
+  position: relative;
+}
+.whatsapp-btn:hover { transform: scale(1.1); }
+.whatsapp-btn::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 3px solid rgba(37,211,102,0.3);
+  animation: waPulse 2s ease-in-out infinite;
+}
+@keyframes waPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0; }
+}
+.whatsapp-menu {
+  position: absolute;
+  bottom: 76px;
+  right: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 16px;
+  min-width: 240px;
+  display: none;
+}
+.whatsapp-menu.active { display: block; animation: menuIn 0.3s ease; }
+@keyframes menuIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.whatsapp-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.whatsapp-menu a:hover { background: var(--bg); }
+.whatsapp-menu a .wa-icon { font-size: 1.3rem; }
+
+/* === FOOTER === */
+.footer {
+  background: #1a1f2c;
+  color: #e0e0e0;
+  padding: 80px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand {
+  padding-right: 24px;
+}
+.footer-title-brand {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #ff7eb3, #ff96d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.footer-tagline {
+  font-size: 1.1rem;
+  color: #ff96d4;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.footer-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.footer-section h4,
+.footer-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #ff7eb3, #ff96d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+}
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.footer-list li strong {
+  display: block;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.footer-list li p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.footer-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer-icon-purple {
+  background: #6a4c7a;
+}
+.footer-icon-olive {
+  background: #8b7355;
+}
+.footer-icon-burgundy {
+  background: #7a4c6a;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+@media (max-width: 968px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-brand {
+    grid-column: auto;
+  }
+}
+
+/* === SCROLL ANIMATIONS === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 968px) {
+  .hero-content { grid-template-columns: 1fr; text-align: center; }
+  .hero-text p { margin: 0 auto 36px; }
+  .hero-buttons { justify-content: center; }
+  .hero-visual { order: -1; }
+  .hero-cake-display { width: 280px; height: 280px; }
+  .cake-emoji { font-size: 7rem; }
+  .hero-badge { display: none; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { columns: 2; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .gallery-grid { columns: 1; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon"><img src="logo1.png" alt="Dulce Jenny"></span>
+      Dulce Jenny
+    </a>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Cat&aacute;logo</a>
+      <a href="#galeria">Galer&iacute;a</a>
+      <a href="#promociones-dia">Promociones</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <!-- <a href="#cotizar" class="btn-cotizar">Cotizar</a> -->
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Men&uacute;">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#inicio" onclick="closeMobile()">Inicio</a>
+  <a href="#productos" onclick="closeMobile()">Cat&aacute;logo</a>
+  <a href="#galeria" onclick="closeMobile()">Galer&iacute;a</a>
+  <a href="#promociones-dia" onclick="closeMobile()">Promociones</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#cotizar" class="btn-primary" onclick="closeMobile()">Cotizar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Creamos <span>momentos dulces</span> e inolvidables</h1>
+      <p>El toque de dulzura que necesitas<br><br>Artesan&iacute;a en cada bocado. Llevamos la alta calidad de nuestros insumos.<br>Tortas, cupcakes y postres artesanales y mas.. dise&ntilde;ados para celebraciones &uacute;nicas.</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn-primary">&#127856; Ver Cat&aacute;logo</a>
+        <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20cotizar%20un%20pedido" class="btn-secondary" target="_blank">&#128172; Cotizar por WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-cake-display">
+        <span class="cake-emoji"><img src="logo1.png" alt="Dulce Jenny" style="width:100%;height:100%;object-fit:contain;"></span>
+      </div>
+      <div class="hero-badge hero-badge-1">
+        <span>&#11088;</span> +850 Clientes Felices
+      </div>
+      <div class="hero-badge hero-badge-2">
+        <span>&#127856;</span> 100% Artesanal
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="products" id="productos">
+  <div class="container">
+    <h2 class="section-title reveal">Nuestro Cat&aacute;logo</h2>
+    <p class="section-subtitle reveal">Explora nuestras categor&iacute;as y descubre la variedad perfecta para tu evento</p>
+    
+    <!-- View Selector -->
+    <div class="catalog-view-controls reveal">
+      <div class="catalog-filters">
+        <button class="filter-btn" data-category="salado">Cocteler&iacute;a Salada</button>
+        <button class="filter-btn" data-category="dulce">Mundo Dulce</button>
+        <button class="filter-btn" data-category="tablas">Tablas de Regalo</button>
+        <button class="filter-btn" data-category="tortas">Tortas</button>
+        <button class="filter-btn" data-category="promos">Bocados y Promociones</button>
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="gallery" title="Vista Galería">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <rect x="0" y="0" width="9" height="9" rx="1"/>
+            <rect x="11" y="0" width="9" height="9" rx="1"/>
+            <rect x="0" y="11" width="9" height="9" rx="1"/>
+            <rect x="11" y="11" width="9" height="9" rx="1"/>
+          </svg>
+        </button>
+        <button class="view-btn" data-view="list" title="Vista Lista">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <rect x="0" y="2" width="20" height="3" rx="1"/>
+            <rect x="0" y="8.5" width="20" height="3" rx="1"/>
+            <rect x="0" y="15" width="20" height="3" rx="1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Catalog Content -->
+    <div class="catalog-content" id="catalogContent">
+      <!-- Products will be dynamically loaded here -->
+    </div>
+
+    <!-- Calculator Section -->
+    <div class="catalog-calculator reveal">
+      <h3>&iquest;Cu&aacute;nto necesitas para tu evento?</h3>
+      <div class="calculator-options">
+        <div class="calculator-option">
+          <span class="calc-emoji">&#9201;</span>
+          <h4>Evento 2-3 horas</h4>
+          <p>6-10 bocados por persona</p>
+        </div>
+        <div class="calculator-option">
+          <span class="calc-emoji">&#127881;</span>
+          <h4>Evento 3-4 horas</h4>
+          <p>10-15 bocados por persona</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Consultation Note -->
+    <div class="catalog-consultation-note reveal" aria-label="Recuerda consultar por variedades y cantidades por tipo de producto para hacer de tu celebración inolvidable">
+      <p aria-hidden="true">
+        <span>Recuerda consultar por variedades y cantidades por tipo de producto para hacer de tu celebraci&oacute;n <strong>INOLVIDABLE</strong></span>
+        <span>Recuerda consultar por variedades y cantidades por tipo de producto para hacer de tu celebraci&oacute;n <strong>INOLVIDABLE</strong></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <h2 class="section-title reveal">Nuestra Galer&iacute;a</h2>
+    <p class="section-subtitle reveal">Inspiraci&oacute;n dulce para tu pr&oacute;ximo evento</p>
+    
+    <!-- Gallery Filters -->
+    <div class="gallery-filters reveal">
+      <button class="gallery-filter-btn active" data-filter="salados">Salados</button>
+      <button class="gallery-filter-btn" data-filter="dulces">Dulces</button>
+      <button class="gallery-filter-btn" data-filter="tablas">Tablas</button>
+      <button class="gallery-filter-btn" data-filter="tortas">Tortas</button>
+      <button class="gallery-filter-btn" data-filter="bocados">Bocados</button>
+      <button class="gallery-filter-btn" data-filter="promociones">Promociones</button>
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="gallery-grid reveal">
+      <!-- Salados -->
+      <div class="gallery-item" data-category="salados" data-name="Tapaditos Surtidos">
+        <div class="gallery-item-inner">
+          <img src="tapaditos-surtidos.jpeg" alt="Tapaditos Surtidos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tapaditos Surtidos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Hamburguesa">
+        <div class="gallery-item-inner">
+          <img src="mini-hamburguesa.jpeg" alt="Mini Hamburguesa" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Hamburguesa</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Canapés Surtidos">
+        <div class="gallery-item-inner">
+          <img src="canapes-surtidos.jpeg" alt="Canapés Surtidos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Canapés Surtidos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Empanadas">
+        <div class="gallery-item-inner">
+          <img src="mini-empanadas.jpeg" alt="Mini Empanadas" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Empanadas</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Pizzetas">
+        <div class="gallery-item-inner">
+          <img src="mini-pizzetas.jpeg" alt="Mini Pizzetas" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Pizzetas</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Pinchos">
+        <div class="gallery-item-inner">
+          <img src="pinchos.jpeg" alt="Pinchos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Pinchos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Roll Wraps">
+        <div class="gallery-item-inner">
+          <img src="mini-roll-wraps.jpeg" alt="Mini Roll Wraps" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Roll Wraps</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Churrascos">
+        <div class="gallery-item-inner">
+          <img src="mini-churrascos.jpeg" alt="Mini Churrascos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Churrascos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Alitas de Pollo">
+        <div class="gallery-item-inner">
+          <img src="alitas-pollo.png" alt="Alitas de Pollo" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Alitas de Pollo</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Sopaipillas con Pebre">
+        <div class="gallery-item-inner">
+          <img src="sopaipillas.jpeg" alt="Sopaipillas con Pebre" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Sopaipillas con Pebre</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Brochetas de Pollo">
+        <div class="gallery-item-inner">
+          <img src="brochetas-pollo.jpeg" alt="Brochetas de Pollo" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Brochetas de Pollo</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Chaparrita">
+        <div class="gallery-item-inner">
+          <img src="mini-chaparrita.jpeg" alt="Mini Chaparrita" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Chaparrita</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Choripán">
+        <div class="gallery-item-inner">
+          <img src="mini-choripan.jpeg" alt="Mini Choripán" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Choripán</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Canoas con Guacamole">
+        <div class="gallery-item-inner">
+          <img src="canoas-guacamole.jpeg" alt="Canoas con Guacamole" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Canoas con Guacamole</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Sandwich de Miga Ave Mayo">
+        <div class="gallery-item-inner">
+          <img src="sandwich-miga-ave-mayo.jpeg" alt="Sandwich de Miga Ave Mayo" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Sandwich de Miga Ave Mayo</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Tacos de Pollo">
+        <div class="gallery-item-inner">
+          <img src="tacos-pollo.jpeg" alt="Tacos de Pollo" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tacos de Pollo</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Completo Italiano Coctel">
+        <div class="gallery-item-inner">
+          <img src="completo-italiano-coctel.jpeg" alt="Completo Italiano Coctel" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Completo Italiano Coctel</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Ají Relleno">
+        <div class="gallery-item-inner">
+          <img src="aji-relleno.jpeg" alt="Ají Relleno" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Ají Relleno</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Aros de Cebolla Fritos">
+        <div class="gallery-item-inner">
+          <img src="aros-cebolla-fritos.jpeg" alt="Aros de Cebolla Fritos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Aros de Cebolla Fritos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Quiche y Mini Pastel de Choclo">
+        <div class="gallery-item-inner">
+          <img src="quiche-mini-pastel-choclo.jpeg" alt="Quiche y Mini Pastel de Choclo" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Quiche y Mini Pastel de Choclo</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Mini Sandwich">
+        <div class="gallery-item-inner">
+          <img src="mini-sandwich.jpeg" alt="Mini Sandwich" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Sandwich</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="salados" data-name="Sopaipillas Gourmet">
+        <div class="gallery-item-inner">
+          <img src="sopaipillas-gourmet.jpeg" alt="Sopaipillas Gourmet" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Sopaipillas Gourmet</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dulces -->
+      <div class="gallery-item" data-category="dulces" data-name="Coctel Dulce">
+        <div class="gallery-item-inner">
+          <img src="coctel-dulce.png" alt="Coctel Dulce" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Coctel Dulce</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Coctel Dulce Premium">
+        <div class="gallery-item-inner">
+          <img src="coctel-dulce-premium.png" alt="Coctel Dulce Premium" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Coctel Dulce Premium</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Cupcakes Personalizados">
+        <div class="gallery-item-inner">
+          <img src="cupcakes-personalizados.jpeg" alt="Cupcakes Personalizados" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Cupcakes Personalizados</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Tortas en Vaso">
+        <div class="gallery-item-inner">
+          <img src="tortas-en-vaso.png" alt="Tortas en Vaso" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tortas en Vaso</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Mini Shops 50 Grs">
+        <div class="gallery-item-inner">
+          <img src="minishop-50.jpeg" alt="Mini Shops 50 Grs" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Shops 50 Grs</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Mini Shops 75 Grs">
+        <div class="gallery-item-inner">
+          <img src="minishop-75.jpeg" alt="Mini Shops 75 Grs" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Mini Shops 75 Grs</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Donuts">
+        <div class="gallery-item-inner">
+          <img src="donuts.jpeg" alt="Donuts" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Donuts</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Brocheta de Donuts">
+        <div class="gallery-item-inner">
+          <img src="brocheta-donuts.jpeg" alt="Brocheta de Donuts" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Brocheta de Donuts</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="dulces" data-name="Brochetas de Fruta">
+        <div class="gallery-item-inner">
+          <img src="brochetas-fruta.jpeg" alt="Brochetas de Fruta" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Brochetas de Fruta</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tablas -->
+      <div class="gallery-item" data-category="tablas" data-name="Tabla Mixta Dulce y Salada">
+        <div class="gallery-item-inner">
+          <img src="tabla-mixta-dulce-salada.png" alt="Tabla Mixta Dulce y Salada" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla Mixta Dulce y Salada</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla Mixta Grande">
+        <div class="gallery-item-inner">
+          <img src="tabla-mixta-grande.png" alt="Tabla Mixta Grande" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla Mixta Grande</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla Niños Dulce">
+        <div class="gallery-item-inner">
+          <img src="tabla-ninos-dulce.png" alt="Tabla Niños Dulce" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla Niños Dulce</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla Dulce Mediana">
+        <div class="gallery-item-inner">
+          <img src="tabla-dulce-mediana.png" alt="Tabla Dulce Mediana" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla Dulce Mediana</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla Dulce Grande">
+        <div class="gallery-item-inner">
+          <img src="tabla-dulce-grande.png" alt="Tabla Dulce Grande" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla Dulce Grande</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla de Quesos Pequeña">
+        <div class="gallery-item-inner">
+          <img src="tabla-quesos-pequena.png" alt="Tabla de Quesos Pequeña" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla de Quesos Pequeña</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla de Quesos Mediana">
+        <div class="gallery-item-inner">
+          <img src="tabla-quesos-mediana.png" alt="Tabla de Quesos Mediana" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla de Quesos Mediana</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tablas" data-name="Tabla de Quesos Grande">
+        <div class="gallery-item-inner">
+          <img src="tabla-quesos-grande.png" alt="Tabla de Quesos Grande" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tabla de Quesos Grande</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tortas (placeholder - sin imágenes reales aún) -->
+      <div class="gallery-item" data-category="tortas" data-name="Torta Base Bizcocho Vainilla">
+        <div class="gallery-item-inner">
+          <img src="tortas-base-vainilla.jpeg" alt="Torta Base Bizcocho Vainilla" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Torta Base Bizcocho Vainilla</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tortas" data-name="Torta Base Bizcocho Chocolate">
+        <div class="gallery-item-inner">
+          <img src="tortas-chocolate.jpeg" alt="Torta Base Bizcocho Chocolate" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Torta Base Bizcocho Chocolate</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tortas" data-name="Torta Helada Merengue">
+        <div class="gallery-item-inner">
+          <img src="torta-helada-merengue.jpeg" alt="Torta Helada Merengue" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Torta Helada Merengue</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item croquembouche-card" data-category="tortas" data-name="Croquembouche">
+        <div class="gallery-item-inner">
+          <img src="torta-croquembuche.jpeg" alt="Croquembouche" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Croquembouche</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tortas" data-name="Torta de Panqueque">
+        <div class="gallery-item-inner">
+          <img src="torta-panqueque.jpeg" alt="Torta de Panqueque" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Torta de Panqueque</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item decoraciones-especiales-card" data-category="tortas" data-name="Decoraciones Especiales">
+        <div class="gallery-item-inner">
+          <img src="decoracion-especial.jpeg" alt="Decoraciones Especiales" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Decoraciones Especiales</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tortas" data-name="Tortas con Topper">
+        <div class="gallery-item-inner">
+          <img src="tortas-con-topper.jpeg" alt="Tortas con Topper" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tortas con Topper</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="tortas" data-name="Tortas con Lámina de Azúcar">
+        <div class="gallery-item-inner">
+          <img src="tortas-laminas-azucar.jpeg" alt="Tortas con Lámina de Azúcar" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Tortas con Lámina de Azúcar</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bocados (placeholder) -->
+      <div class="gallery-item" data-category="bocados" data-name="Bocado 1">
+        <div class="gallery-item-inner">
+          <img src="imagenbocado.jpeg" alt="Bocado 1" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocado 1</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocado 2">
+        <div class="gallery-item-inner">
+          <img src="imagenbocado.jpeg" alt="Bocado 2" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocado 2</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocado 3">
+        <div class="gallery-item-inner">
+          <img src="imagenbocado.jpeg" alt="Bocado 3" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocado 3</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocado 4">
+        <div class="gallery-item-inner">
+          <img src="bocado4-50.jpeg" alt="Bocado 4" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocado 4</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 5">
+        <div class="gallery-item-inner">
+          <img src="bocado5-50.jpeg" alt="Bocados 5" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 5</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 6">
+        <div class="gallery-item-inner">
+          <img src="bocado6-50.jpeg" alt="Bocados 6" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 6</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 7">
+        <div class="gallery-item-inner">
+          <img src="bocado7-50.jpeg" alt="Bocados 7" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 7</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 8">
+        <div class="gallery-item-inner">
+          <img src="bocado8-50.jpeg" alt="Bocados 8" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 8</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 9">
+        <div class="gallery-item-inner">
+          <img src="bocado9-50.jpeg" alt="Bocados 9" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 9</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 10">
+        <div class="gallery-item-inner">
+          <img src="bocado10-65.jpeg" alt="Bocados 10" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 10</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 11">
+        <div class="gallery-item-inner">
+          <img src="bocado11-65.jpeg" alt="Bocados 11" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 11</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 12">
+        <div class="gallery-item-inner">
+          <img src="bocado12-65.jpeg" alt="Bocados 12" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 12</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="bocados" data-name="Bocados 13">
+        <div class="gallery-item-inner">
+          <img src="bocado13-65.jpeg" alt="Bocados 13" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Bocados 13</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Promociones (placeholder) -->
+      <div class="gallery-item" data-category="promociones" data-name="Pocos pero Sabrosos">
+        <div class="gallery-item-inner">
+          <img src="WhatsApp Image 2026-07-13 at 9.21.43 PM.jpeg" alt="Pocos pero Sabrosos" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Pocos pero Sabrosos</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="promociones" data-name="Que no le Falte">
+        <div class="gallery-item-inner">
+          <img src="WhatsApp Image 2026-07-13 at 9.21.43 PM (1).jpeg" alt="Que no le Falte" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Que no le Falte</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="promociones" data-name="Detodo un Poco">
+        <div class="gallery-item-inner">
+          <img src="WhatsApp Image 2026-07-13 at 9.21.44 PM.jpeg" alt="Detodo un Poco" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Detodo un Poco</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="promociones" data-name="Promo 110 unid">
+        <div class="gallery-item-inner">
+          <img src="promo-110-unid-10-pers.jpeg" alt="Promo 110 unid" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Promo 110 unid</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="promociones" data-name="Promo 174 unid">
+        <div class="gallery-item-inner">
+          <img src="promo-174-unid-16-pers.jpeg" alt="Promo 174 unid" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Promo 174 unid</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="promociones" data-name="Promo 352 unid">
+        <div class="gallery-item-inner">
+          <img src="promo-352-unid-30-pers.jpeg" alt="Promo 352 unid" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-overlay-text">Promo 352 unid</div>
+            <button class="gallery-item-overlay-btn">Ver más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOCIONES DEL DIA -->
+<section class="daily-promos" id="promociones-dia">
+  <div class="container">
+    <h2 class="section-title reveal">Promociones del D&iacute;a</h2>
+    <p class="section-subtitle reveal">Galer&iacute;a cin&eacute;tica con promociones y eventos destacados para celebrar y compartir</p>
+    
+    <div class="promo-carousel-shell reveal" aria-label="Carrusel de Promociones del Día">
+      <button class="promo-arrow prev" type="button" id="promoPrev" aria-label="Promoción anterior">‹</button>
+      <div class="promo-carousel" id="promoCarousel">
+        <div class="promo-track" id="promoTrack"></div>
+      </div>
+      <button class="promo-arrow next" type="button" id="promoNext" aria-label="Promoción siguiente">›</button>
+      <div class="promo-progress" aria-hidden="true">
+        <div class="promo-progress-fill" id="promoProgress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-lightbox" id="promoLightbox" aria-hidden="true">
+    <button class="promo-lightbox-close" type="button" id="promoLightboxClose" aria-label="Cerrar">✕</button>
+    <button class="promo-lightbox-nav prev" type="button" id="promoLightboxPrev" aria-label="Imagen anterior">‹</button>
+    <img id="promoLightboxImg" src="" alt="Promoción del Día">
+    <button class="promo-lightbox-nav next" type="button" id="promoLightboxNext" aria-label="Imagen siguiente">›</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="nosotros">
+  <div class="container">
+    <h2 class="section-title reveal">Lo que dicen nuestros clientes</h2>
+    <p class="section-subtitle reveal">M&aacute;s de 850 familias felices nos recomiendan</p>
+    <div class="testimonial-grid reveal">
+      <!-- Columna Izquierda -->
+      <div class="testimonial-carousel" data-carousel="left">
+        <div class="testimonial-track" id="testimonialTrackLeft">
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128105;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;La torta de mi matrimonio fue absolutamente espectacular. Todos los invitados quedaron encantados con el sabor y el dise&ntilde;o.&rdquo;</p>
+            <div class="testimonial-name">Carolina M&eacute;ndez</div>
+            <div class="testimonial-product">Torta Matrimonio &bull; 80 porciones</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128104;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;Ped&iacute; una torta de dinosaurios para mi hijo y qued&oacute; id&eacute;ntica a la imagen. El sabor a chocolate era incre&iacute;ble.&rdquo;</p>
+            <div class="testimonial-name">Roberto S&aacute;nchez</div>
+            <div class="testimonial-product">Torta Personalizada &bull; 20 porciones</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128105;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;Los cupcakes para el baby shower fueron un &eacute;xito total. Hermosos y deliciosos. &iexcl;Repetir&eacute; sin duda!&rdquo;</p>
+            <div class="testimonial-name">Valentina Rojas</div>
+            <div class="testimonial-product">Cupcakes Gourmet &bull; 50 unidades</div>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDotsLeft">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+        </div>
+      </div>
+      
+      <!-- Columna Derecha -->
+      <div class="testimonial-carousel" data-carousel="right">
+        <div class="testimonial-track" id="testimonialTrackRight">
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128105;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;Los cupcakes para el baby shower fueron un &eacute;xito total. Hermosos y deliciosos. &iexcl;Repetir&eacute; sin duda!&rdquo;</p>
+            <div class="testimonial-name">Valentina Rojas</div>
+            <div class="testimonial-product">Cupcakes Gourmet &bull; 50 unidades</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128104;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;Contratamos el servicio de postres para un evento corporativo y super&oacute; todas las expectativas. Presentaci&oacute;n impecable.&rdquo;</p>
+            <div class="testimonial-name">Andr&eacute;s Fuentes</div>
+            <div class="testimonial-product">Postres Premium &bull; Evento Empresa</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-avatar">&#128105;</div>
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-text">&ldquo;Excelente servicio y calidad. Los productos superaron nuestras expectativas.&rdquo;</p>
+            <div class="testimonial-name">Mar&iacute;a Gonz&aacute;lez</div>
+            <div class="testimonial-product">Evento Especial &bull; 100 personas</div>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDotsRight">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="1500">0</div>
+        <div class="stat-label">Pedidos Entregados</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="850">0</div>
+        <div class="stat-label">Clientes Felices</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="120">0</div>
+        <div class="stat-label">Eventos Realizados</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="8">0</div>
+        <div class="stat-label">A&ntilde;os de Experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float" id="whatsappFloat">
+  <div class="whatsapp-menu" id="whatsappMenu">
+    <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20cotizar%20una%20torta%20personalizada" target="_blank">
+      <span class="wa-icon">&#127874;</span> Cotizar Torta
+    </a>
+    <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20consultar%20precios%20de%20sus%20productos" target="_blank">
+      <span class="wa-icon">&#128176;</span> Consultar Precios
+    </a>
+    <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20un%20evento%20especial" target="_blank">
+      <span class="wa-icon">&#127881;</span> Evento Especial
+    </a>
+    <a href="https://wa.me/56994865001?text=Hola%2C%20necesito%20un%20pedido%20urgente%20por%20favor" target="_blank">
+      <span class="wa-icon">&#9889;</span> Pedido Urgente
+    </a>
+  </div>
+  <button class="whatsapp-btn" id="whatsappBtn" aria-label="WhatsApp">&#128172;</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3 class="footer-title-brand">Dulce Jenny</h3>
+        <p class="footer-tagline">El toque de dulzura que necesitas</p>
+        <p class="footer-description">M&aacute;s de 8 a&ntilde;os creando momentos inolvidables con productos de alta calidad.</p>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-title">Contacto</h4>
+        <ul class="footer-list">
+          <li>
+            <span class="footer-icon footer-icon-purple">&#128222;</span>
+            <span>+56994865001</span>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-purple">&#128247;</span>
+            <span>@dulcejenny_tortas_coctel</span>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-purple">&#128071;</span>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="661003081207152602130a05030c0308081f48050a">[email&#160;protected]</a></span>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-purple">&#128205;</span>
+            <span>La Florida, Paradero 14<br>Av. La Florida</span>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-title">Reservas</h4>
+        <ul class="footer-list">
+          <li>
+            <span class="footer-icon footer-icon-olive">&#9200;</span>
+            <div>
+              <strong>Anticipaci&oacute;n</strong>
+              <p>Cocteles: 2 d&iacute;as m&iacute;nimo / Tablas: 3 d&iacute;as m&iacute;nimo</p>
+            </div>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-olive">&#128179;</span>
+            <div>
+              <strong>Abono</strong>
+              <p>50% del total para reservar</p>
+            </div>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-olive">&#128230;</span>
+            <div>
+              <strong>Retiro y Env&iacute;o</strong>
+              <p>La Florida, Paradero 14<br>Disponible con cargo seg&uacute;n comuna</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-title">M&eacute;todos de Pago</h4>
+        <ul class="footer-list">
+          <li>
+            <span class="footer-icon footer-icon-burgundy">&#128179;</span>
+            <div>
+              <strong>Transferencia</strong>
+              <p>Primera reserva</p>
+            </div>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-burgundy">&#128176;</span>
+            <div>
+              <strong>Efectivo</strong>
+              <p>Solo segundo pago</p>
+            </div>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-burgundy">&#128179;</span>
+            <div>
+              <strong>Tarjeta D&eacute;bito</strong>
+            </div>
+          </li>
+          <li>
+            <span class="footer-icon footer-icon-burgundy">&#128179;</span>
+            <div>
+              <strong>Tarjeta Cr&eacute;dito</strong>
+              <p>Recargo 6% v&iacute;a Flow</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2019 Dulce Jenny. Todos los derechos reservados Web design by <a href="/cdn-cgi/l/email-protection#98fbf7f5e8edfdf4fdfbf0f1f4fdd8fff5f9f1f4b6fbf7f5"><span class="__cf_email__" data-cfemail="2c4f43415c594940494f444540496c4b414d4540024f4341">[email&#160;protected]</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+  <div class="lightbox-content" id="lightboxContent"></div>
+  <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* === HEADER SCROLL === */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* === MOBILE MENU === */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+function closeMobile() { mobileMenu.classList.remove('active'); }
+
+/* === SCROLL REVEAL === */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* === GALLERY FILTERS === */
+const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+// Apply initial filter (Salados)
+galleryItems.forEach(item => {
+  if (item.dataset.category !== 'salados') {
+    item.classList.add('hidden');
+  }
+});
+
+galleryFilterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update active button
+    galleryFilterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const filter = btn.dataset.filter;
+    
+    // Filter items with animation
+    galleryItems.forEach(item => {
+      if (item.dataset.category === filter) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  });
+});
+
+/* === GALLERY LIGHTBOX === */
+let currentLightboxIndex = 0;
+let visibleGalleryItems = [];
+
+function updateVisibleItems() {
+  visibleGalleryItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
+}
+
+function openLightbox(index) {
+  updateVisibleItems();
+  currentLightboxIndex = index;
+  const item = visibleGalleryItems[index];
+  const img = item.querySelector('img');
+  const name = item.dataset.name;
+  
+  document.getElementById('lightboxContent').innerHTML = `
+    <img src="${img.src}" alt="${name}">
+  `;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function navigateLightbox(direction) {
+  updateVisibleItems();
+  currentLightboxIndex += direction;
+  
+  if (currentLightboxIndex < 0) {
+    currentLightboxIndex = visibleGalleryItems.length - 1;
+  } else if (currentLightboxIndex >= visibleGalleryItems.length) {
+    currentLightboxIndex = 0;
+  }
+  
+  const item = visibleGalleryItems[currentLightboxIndex];
+  const img = item.querySelector('img');
+  const name = item.dataset.name;
+  
+  document.getElementById('lightboxContent').innerHTML = `
+    <img src="${img.src}" alt="${name}">
+  `;
+}
+
+// Add click handlers to gallery items
+galleryItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    updateVisibleItems();
+    const visibleIndex = visibleGalleryItems.indexOf(item);
+    openLightbox(visibleIndex);
+  });
+});
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') {
+    closeLightbox();
+  }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  
+  if (e.key === 'Escape') {
+    closeLightbox();
+  } else if (e.key === 'ArrowLeft') {
+    navigateLightbox(-1);
+  } else if (e.key === 'ArrowRight') {
+    navigateLightbox(1);
+  }
+});
+
+/* === PROMOCIONES DEL DIA CAROUSEL === */
+(function initDailyPromosCarousel() {
+  const promoImages = [
+    { src: "WhatsApp Image 2026-07-13 at 9.20.56 PM.jpeg", title: "Coctel Dulce", label: "Oferta especial" },
+    { src: "WhatsApp Image 2026-07-13 at 9.20.56 PM (1).jpeg", title: "Coctel Salado", label: "Oferta especial" },
+    { src: "WhatsApp Image 2026-07-13 at 9.20.56 PM (2).jpeg", title: "Tablas de Picar", label: "Oferta especial" },
+    { src: "WhatsApp Image 2026-07-13 at 9.20.57 PM.jpeg", title: "Bocados Promo", label: "Oferta especial" },
+    { src: "WhatsApp Image 2026-07-13 at 9.20.57 PM (1).jpeg", title: "Tortas Perzonalizadas", label: "Oferta especial" },
+    { src: "evento-cumpleanos.png", title: "Cumpleaños", label: "Evento especial" },
+    { src: "evento-matrimonios.png", title: "Matrimonios", label: "Evento especial" },
+    { src: "evento-bautizos.png", title: "Bautizos", label: "Evento especial" },
+    { src: "evento-baby-shower.png", title: "Baby Shower", label: "Evento especial" },
+    { src: "evento-empresas.png", title: "Empresas", label: "Evento especial" },
+    { src: "logo1.png", title: "Día de la Madre", label: "Evento especial" },
+    { src: "logo1.png", title: "Día del Padre", label: "Evento especial" },
+    { src: "evento-cyber.png", title: "Cyber", label: "Evento especial" }
+  ];
+
+  const track = document.getElementById('promoTrack');
+  const carousel = document.getElementById('promoCarousel');
+  const nextBtn = document.getElementById('promoNext');
+  const prevBtn = document.getElementById('promoPrev');
+  const progress = document.getElementById('promoProgress');
+  const modal = document.getElementById('promoLightbox');
+  const modalImg = document.getElementById('promoLightboxImg');
+  if (!track || !carousel) return;
+
+  const loopedPromos = [...promoImages, ...promoImages, ...promoImages];
+  let promoIndex = promoImages.length;
+  let modalIndex = 0;
+  let autoTimer = null;
+  const autoMs = 3900;
+
+  track.innerHTML = loopedPromos.map((promo, index) => {
+    const realIndex = index % promoImages.length;
+    return `
+      <article class="promo-slide" data-real-index="${realIndex}">
+        <div class="promo-card" role="button" tabindex="0" aria-label="Ver ${promo.title}">
+          <img src="${promo.src}" alt="${promo.title}" loading="lazy">
+          <div class="promo-ribbon">${promo.label || 'Oferta especial'}</div>
+          <div class="promo-card-caption">
+            <h3>${promo.title}</h3>
+            <span>Ver promoción completa</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  const slides = Array.from(track.children);
+
+  function currentPerView() {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 980) return 2;
+    return 3;
+  }
+
+  function cardStep() {
+    const first = slides[0];
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  function restartProgress() {
+    if (!progress) return;
+    progress.style.animation = 'none';
+    progress.offsetHeight;
+    progress.style.animation = `promoProgress ${autoMs}ms linear forwards`;
+  }
+
+  function updatePromoClasses() {
+    const focusIndex = promoIndex + Math.floor(currentPerView() / 2);
+    slides.forEach((slide, index) => {
+      const distance = Math.abs(index - focusIndex);
+      slide.classList.toggle('is-focus', distance === 0);
+      slide.classList.toggle('is-near', distance === 1);
+      slide.style.setProperty('--promo-parallax', `${(index - focusIndex) * -10}px`);
+    });
+  }
+
+  function movePromo(animate = true) {
+    track.style.transition = animate ? 'transform 820ms cubic-bezier(.18,.84,.22,1)' : 'none';
+    track.style.transform = `translateX(${-promoIndex * cardStep()}px)`;
+    updatePromoClasses();
+    if (animate) restartProgress();
+  }
+
+  function nextPromo() {
+    promoIndex += 1;
+    movePromo(true);
+  }
+
+  function prevPromo() {
+    promoIndex -= 1;
+    movePromo(true);
+  }
+
+  function startAuto() {
+    stopAuto();
+    restartProgress();
+    autoTimer = setInterval(nextPromo, autoMs);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  track.addEventListener('transitionend', () => {
+    if (promoIndex >= promoImages.length * 2) {
+      promoIndex = promoImages.length;
+      movePromo(false);
+    }
+    if (promoIndex < promoImages.length) {
+      promoIndex = promoImages.length * 2 - 1;
+      movePromo(false);
+    }
+  });
+
+  nextBtn && nextBtn.addEventListener('click', () => { nextPromo(); startAuto(); });
+  prevBtn && prevBtn.addEventListener('click', () => { prevPromo(); startAuto(); });
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+  carousel.addEventListener('focusin', stopAuto);
+  carousel.addEventListener('focusout', startAuto);
+  window.addEventListener('resize', () => movePromo(false));
+
+  slides.forEach(slide => {
+    const card = slide.querySelector('.promo-card');
+    const realIndex = Number(slide.dataset.realIndex);
+    const open = () => openPromoLightbox(realIndex);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+
+  function setPromoLightbox(index) {
+    modalIndex = (index + promoImages.length) % promoImages.length;
+    modalImg.src = promoImages[modalIndex].src;
+    modalImg.alt = promoImages[modalIndex].title;
+  }
+
+  function openPromoLightbox(index) {
+    setPromoLightbox(index);
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    stopAuto();
+  }
+
+  function closePromoLightbox() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    startAuto();
+  }
+
+  function navigatePromoLightbox(direction) {
+    setPromoLightbox(modalIndex + direction);
+  }
+
+  document.getElementById('promoLightboxClose')?.addEventListener('click', closePromoLightbox);
+  document.getElementById('promoLightboxPrev')?.addEventListener('click', () => navigatePromoLightbox(-1));
+  document.getElementById('promoLightboxNext')?.addEventListener('click', () => navigatePromoLightbox(1));
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closePromoLightbox();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!modal.classList.contains('active')) return;
+    if (event.key === 'Escape') closePromoLightbox();
+    if (event.key === 'ArrowLeft') navigatePromoLightbox(-1);
+    if (event.key === 'ArrowRight') navigatePromoLightbox(1);
+  });
+
+  movePromo(false);
+  startAuto();
+})();
+
+/* === TESTIMONIAL CAROUSEL === */
+// Carrusel Izquierdo
+let carouselIndexLeft = 0;
+const trackLeft = document.getElementById('testimonialTrackLeft');
+const dotsLeft = document.querySelectorAll('#carouselDotsLeft .carousel-dot');
+const totalSlidesLeft = dotsLeft.length;
+
+// Carrusel Derecho
+let carouselIndexRight = 0;
+const trackRight = document.getElementById('testimonialTrackRight');
+const dotsRight = document.querySelectorAll('#carouselDotsRight .carousel-dot');
+const totalSlidesRight = dotsRight.length;
+
+function goToSlideLeft(i) {
+  carouselIndexLeft = i;
+  trackLeft.style.transform = `translateX(-${i * 100}%)`;
+  dotsLeft.forEach(d => d.classList.remove('active'));
+  dotsLeft[i].classList.add('active');
+  
+  // Sincronizar con el carrusel derecho
+  goToSlideRight(i % totalSlidesRight);
+}
+
+function goToSlideRight(i) {
+  carouselIndexRight = i;
+  trackRight.style.transform = `translateX(-${i * 100}%)`;
+  dotsRight.forEach(d => d.classList.remove('active'));
+  dotsRight[i].classList.add('active');
+}
+
+dotsLeft.forEach(d => d.addEventListener('click', () => goToSlideLeft(parseInt(d.dataset.index))));
+dotsRight.forEach(d => d.addEventListener('click', () => goToSlideRight(parseInt(d.dataset.index))));
+
+// Auto-rotación sincronizada cada 5 segundos
+setInterval(() => {
+  const nextIndex = (carouselIndexLeft + 1) % totalSlidesLeft;
+  goToSlideLeft(nextIndex);
+}, 5000);
+
+/* === ANIMATED COUNTERS === */
+const counters = document.querySelectorAll('.stat-number');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = `+${current.toLocaleString('es-CL')}`;
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+/* === WHATSAPP FLOATING === */
+const waBtn = document.getElementById('whatsappBtn');
+const waMenu = document.getElementById('whatsappMenu');
+waBtn.addEventListener('click', () => waMenu.classList.toggle('active'));
+document.addEventListener('click', (e) => {
+  if (!document.getElementById('whatsappFloat').contains(e.target)) waMenu.classList.remove('active');
+});
+
+/* === CATALOG DATA === */
+const catalogData = {
+  salado: {
+    title: "Coctelería Salada",
+    icon: "🥗",
+    pdf: "Catalogo Coctel Salado - DJ.pdf",
+    products: [
+      { name: "Tapaditos Surtidos", desc: "<strong>Ingredientes:</strong> Jamón, queso, palta, palmito, ave pimentón, huevo mayo<br>Pan gourmet o blanco", price: "24 unid. $18.720\n48 unid. $37.440\n100 unid. $78.000", icon: "🥪", image: "tapaditos-surtidos.jpeg", vertical: true },
+      { name: "Mini Hamburguesa", desc: "<strong>Ingredientes:</strong> Pan gourmet, mayonesa, nuggets de pollo, queso cheddar", price: "25 unid. $15.000\n50 unid. $30.000\n100 unid. $60.000", icon: "🍔", image: "mini-hamburguesa.jpeg", vertical: true },
+      { name: "Canapés Surtidos", desc: "<strong>Ingredientes:</strong> Palmito, pollo, palta, jamón, salame, choritos, churrasco<br>7 tipos en pan de molde", price: "25 unid. $12.000\n50 unid. $24.000\n100 unid. $48.000", icon: "🥖", image: "canapes-surtidos.jpeg", vertical: true },
+      { name: "Mini Empanadas", desc: "<strong>Ingredientes:</strong> Jamón queso, pino, champiñón queso, napolitana, choclo queso, pollo<br>Surtidas y al horno", price: "50 unid. $32.500\n80 unid. $52.000\n100 unid. $65.000", icon: "🥟", image: "mini-empanadas.jpeg", vertical: true },
+      { name: "Mini Chaparrita", desc: "<strong>Ingredientes:</strong> Masa, salchicha, queso<br>Horneada", price: "25 unid. $16.250\n50 unid. $32.500\n100 unid. $65.000", icon: "🌭", image: "mini-chaparrita.jpeg", vertical: true },
+      { name: "Mini Pizzetas", desc: "<strong>Ingredientes:</strong> Jamón, chorillo, salame, churrasco, vegetariana<br>Producto para calentar", price: "12 unid. $8.400\n24 unid. $16.800\n36 unid. $25.200", icon: "🍕", image: "mini-pizzetas.jpeg", vertical: true },
+      { name: "Pinchos", desc: "<strong>Ingredientes:</strong> Queso gauda, salame, tomate cherry, aceite albahaca<br>Mini brochetas saladas", price: "20 unid. $14.000\n30 unid. $21.000\n40 unid. $28.000", icon: "🍢", image: "pinchos.jpeg", vertical: true },
+      { name: "Mini Roll Wraps", desc: "<strong>Ingredientes:</strong> Tortillas, mayonesa, lechuga, tomate, palta, pepinillo dill<br>Opción pollo-jamón o vegetariana", price: "18 unid. $12.600\n24 unid. $16.800\n36 unid. $25.200", icon: "🌯", image: "mini-roll-wraps.jpeg", vertical: true },
+      { name: "Mini Churrascos", desc: "<strong>Ingredientes:</strong> Pan gourmet (betarraga, zapallo, espinaca), carne, palta, tomate<br>Italiano, queso o chacarero", price: "15 unid. $13.500\n25 unid. $22.500\n35 unid. $31.500", icon: "🥩", image: "mini-churrascos.jpeg", vertical: true },
+      { name: "Alitas de Pollo", desc: "<strong>Ingredientes:</strong> Alitas de pollo, salsa mostaza o barbacoa (BBQ)<br>Asadas", price: "25 unid. $20.000\n35 unid. $28.000\n45 unid. $36.000", icon: "🍗", image: "alitas-pollo.png", vertical: true },
+      { name: "Sopaipillas con Pebre", desc: "<strong>Ingredientes:</strong> Sopaipillas, pebre casero", price: "20 unid. $7.400\n30 unid. $11.100\n40 unid. $14.800", icon: "🫓", image: "sopaipillas.jpeg", vertical: true },
+      { name: "Mini Sandwich", desc: "<strong>Ingredientes:</strong><ul class='catalog-detail-list'><li>Pollo, queso cheddar con cebolla caramelizada</li><li>Jamon Asado, queso con pepinillo dill</li><li>Carne Mechada tomate y mayonesa</li></ul>", price: "20 unid. $17.000\n30 unid. $25.500\n40 unid. $34.000", icon: "🥪", image: "mini-sandwich.jpeg", vertical: true },
+      { name: "Mini Choripán", desc: "<strong>Ingredientes:</strong> Pan, longanicilla, pebre, mayonesa<br>Mini choripán con pebre y mayonesa", price: "15 unid. $11.250\n25 unid. $18.750\n35 unid. $26.250", icon: "🌭", image: "mini-choripan.jpeg", vertical: true },
+      { name: "Canoas con Guacamole", desc: "<strong>Ingredientes:</strong> Tortilla, lechuga, tomate, palta, choclo, cilantro, cebolla morada<br>Tortilla en forma de canoa con guacamole", price: "12 unid. $9.000\n24 unid. $18.000\n36 unid. $27.000", icon: "🥑", image: "canoas-guacamole.jpeg", vertical: true },
+      { name: "Tacos de Pollo", desc: "<strong>Ingredientes:</strong> Tortilla, tomate, nuggets pollo, choclo, lechuga, mayonesa<br>Mini tacos fríos de pollo", price: "12 unid. $9.000\n24 unid. $18.000\n36 unid. $27.000", icon: "🌮", image: "tacos-pollo.jpeg", vertical: true },
+      { name: "Ají Relleno", desc: "<strong>Ingredientes:</strong> Ají verde, queso crema, pollo, pimentón, panko<br>Ají verde relleno, apanado en panko y frito", price: "6 unid. $8.100\n12 unid. $16.200\n18 unid. $24.300", icon: "🌶️", image: "aji-relleno.jpeg", vertical: true },
+      { name: "Aros de Cebolla Fritos", desc: "<strong>Ingredientes:</strong> Cebolla, panko<br>Aros de cebolla apanados en panko", price: "12 unid. $7.200\n18 unid. $10.800\n24 unid. $14.400", icon: "🧅", image: "aros-cebolla-fritos.jpeg", vertical: true },
+      { name: "Quiche y Mini Pastel de Choclo", desc: "<strong>Ingredientes:</strong> Quiche acelga, champiñón, pollo choclo. Pastel de choclo<br>Quiche variadas y mini pastel de choclo", price: "12 unid. $9.600\n18 unid. $14.400\n24 unid. $19.200", icon: "🥧", image: "quiche-mini-pastel-choclo.jpeg", vertical: true },
+      { name: "Completo Italiano Coctel", desc: "<strong>Ingredientes:</strong> Pan suave, salchicha, palta cremosa, tomate, mayonesa<br>Mini completo italiano", price: "12 unid. $10.200\n24 unid. $20.400\n36 unid. $30.600", icon: "🌭", image: "completo-italiano-coctel.jpeg", vertical: true },
+      { name: "Brochetas de Pollo", desc: "<strong>Ingredientes:</strong> Pollo<br>Brochetas de pollo a la plancha", price: "15 unid. $19.500\n25 unid. $32.500\n35 unid. $45.500", icon: "🍗", image: "brochetas-pollo.jpeg", vertical: true },
+      { name: "Sandwich de Miga Ave Mayo", desc: "<strong>Ingredientes:</strong> Pan de miga, ave mayo, lechuga, tomate o pepinillo<br>Sandwich de miga con ave mayo y pimentón", price: "12 unid. $7.800\n24 unid. $15.600\n36 unid. $23.400", icon: "🥪", image: "sandwich-miga-ave-mayo.jpeg", vertical: true },
+      { name: "Sopaipillas Gourmet", desc: "<strong>Ingredientes:</strong> Sopaipillas zapallo con betarraga<br>(con salsas de guacamole, salsa de mostaza y cebolla con pimentón caramelizada)", price: "30 unid. $13.500\n40 unid. $18.000\n50 unid. $22.500\n60 unid. $27.000", icon: "🫓", image: "sopaipillas-gourmet.jpeg", vertical: true }
+    ]
+  },
+  dulce: {
+    title: "Mundo Dulce",
+    icon: "🧁",
+    pdf: "Catalogo Coctel Dulce - DJ.pdf",
+    products: [
+      { name: "Coctel Dulce", desc: "12 variedades: 4 tipos de panqueques, tartaleta de fruta, repollo de chocolate y mani, tacita de chocolate rellena y más.", price: "25 unid. $13.500\n50 unid. $27.000\n100 unid. $54.000", icon: "🍰", image: "coctel-dulce.png", vertical: true },
+      { name: "Coctel Dulce Premium", desc: "Selección premium de bocados dulces<ul class='catalog-detail-list'><li>4 tipos de panqueques</li><li>Repollo con baño de chocolate</li><li>Repollo apanado de mani</li></ul>", price: "25 unid. $17.250\n50 unid. $34.500\n100 unid. $69.000", icon: "✨", image: "coctel-dulce-premium.png", vertical: true },
+      { name: "Cupcakes Personalizados", desc: "Con y Sin relleno de manjar o crema pastelera, toppers personalizados", price: "12 unid. $12.600\n24 unid. $25.200\n36 unid. $37.800", icon: "🧁", image: "cupcakes-personalizados.jpeg", vertical: true },
+      { name: "Tortas en Vaso", desc: "400ml - 4 leches, chocolate, amapola, moka, durazno, frutilla", price: "$2.500 c/u", icon: "🥤", image: "tortas-en-vaso.png", vertical: true },
+      { name: "Mini Shops 50 Grs", desc: "50gr aprox - 8 sabores: frutilla, lúcuma, oreo, durazno, chocolate, yogurt, 4 leches", price: "20 unidades $17.000\n35 unidades $29.750\n60 unidades $51.000", icon: "🍮", image: "minishop-50.jpeg", vertical: true },
+      { name: "Mini Shops 75 Grs", desc: "75gr aprox - 8 sabores disponibles, consulte por selección: frutilla, lúcuma, oreo, durazno, chocolate, yogurt, 4 leches", price: "12 un. $13.200\n24 un. $26.400\n36 un. $39.600\n48 un. $52.800\n60 un. $66.000", icon: "🍮", image: "minishop-75.jpeg", vertical: true },
+      { name: "Donuts", desc: "Donuts variados para eventos", price: "30 unid. $7.500\n50 unid. $12.500\n70 unid. $17.500\n100 unid. $25.000", icon: "🍩", image: "donuts.jpeg", vertical: true },
+      { name: "Brocheta de Donuts", desc: "3 donuts por brocheta con salsas para acompañar", price: "3 Brocheta $1.000\nOpcional salsas $750 c/u", icon: "🍡", image: "brocheta-donuts.jpeg", vertical: true },
+      { name: "Brochetas de Fruta", desc: "Frutas naturales frescas de temporada", price: "$650 c/u", icon: "🍓", image: "brochetas-fruta.jpeg", vertical: true }
+    ]
+  },
+  tablas: {
+    title: "Tablas de Regalo",
+    icon: "🧀",
+    pdf: "Catalogo Tabla de Picar - DJ.pdf",
+    products: [
+      { name: "Tabla Mixta Dulce y Salada", desc: "3-4 personas: tabla 50cm, vino tinto, mix coctel dulce, sopaipillas, aros cebolla, empanadas, chaparritas, churrasco, sándwich, aceitunas, pebre, ají verde", price: "$36.990", icon: "🎁", image: "tabla-mixta-dulce-salada.png", vertical: true },
+      { name: "Tabla Mixta Grande", desc: "7-8 personas: tabla 100cm con todos los productos de la mixta", price: "$73.500", icon: "🎁", image: "tabla-mixta-grande.png", vertical: true },
+      { name: "Tabla Niños Dulce", desc: "3-4 personas: tabla circular 30cm, alfajores, galletas, salsa chocolate y manjar, barquillos, marshmallow", price: "$27.900", icon: "🍫", image: "tabla-ninos-dulce.png", vertical: true },
+      { name: "Tabla Dulce Mediana", desc: "5-6 personas: tabla rectangular 50cm con productos dulces", price: "$45.900", icon: "🍬", image: "tabla-dulce-mediana.png", vertical: true },
+      { name: "Tabla Dulce Grande", desc: "7-8 personas: tabla rectangular 100cm con productos dulces", price: "$72.900", icon: "🍭", image: "tabla-dulce-grande.png", vertical: true },
+      { name: "Tabla de Quesos Pequeña", desc: "3-4 personas: tabla circular 30cm, mix quesos (brie, suizo, gauda, edam), frutos secos, galletas, aceitunas, salame", price: "$35.900", icon: "🧀", image: "tabla-quesos-pequena.png", vertical: true },
+      { name: "Tabla de Quesos Mediana", desc: "5-6 personas: tabla circular 50cm con mix completo de quesos", price: "$51.900", icon: "🧀", image: "tabla-quesos-mediana.png", vertical: true },
+      { name: "Tabla de Quesos Grande", desc: "7-8 personas: tabla circular 100cm con mix completo de quesos", price: "$75.900", icon: "🧀", image: "tabla-quesos-grande.png", vertical: true }
+    ]
+  },
+  tortas: {
+    title: "Tortas",
+    icon: "🎂",
+    pdf: "Catalogo tortas - DJ.pdf",
+    products: [
+      { name: "Torta Base Bizcocho Vainilla", desc: "3 leches, 4 leches, manjar durazno, manjar chantilly, amapola, lúcuma, frambuesa, moca, piña, frutilla, frutas", price: "10 personas $18.000\n15 personas $27.000\n20 personas $36.000\n25 personas $45.000\n30 personas $54.000\n40 personas $72.000\n50 personas $90.000", icon: "🎂", image: "tortas-base-vainilla.jpeg", vertical: true },
+      { name: "Torta Base Bizcocho Chocolate", desc: "Dulce Choco, Dulce Tentación, Selva Negra, Choco Frutilla", price: "10 personas $19.500\n15 personas $29.250\n20 personas $39.000\n25 personas $48.750\n30 personas $58.500\n40 personas $78.000\n50 personas $97.500", icon: "🍫", image: "tortas-chocolate.jpeg", vertical: true },
+      { name: "Torta Helada Merengue", desc: "Merengue lúcuma, frambuesa o frutilla", price: "10 personas $19.000\n15 personas $28.500\n20 personas $38.000\n25 personas $47.500\n30 personas $57.000\n40 personas $76.000\n50 personas $95.000", icon: "🍨", image: "torta-helada-merengue.jpeg", vertical: true },
+      { name: "Croquembouche", desc: "Profiteroles rellenos de manjar, chantilly o pastelera (6 unid/persona)", price: "40 unidades $28.000\n60 unidades $42.000", icon: "🥐", image: "torta-croquembuche.jpeg", vertical: true },
+      { name: "Torta de Panqueque", desc: "7 variedades: naranja coco, manjar nuez, frambuesa, chocolate, moca, lúcuma, naranja manjar", price: "10 personas $19.000\n15 personas $28.500\n20 personas $38.000\n25 personas $47.500\n30 personas $57.000\n40 personas $76.000\n50 personas $95.000", icon: "🥞", image: "torta-panqueque.jpeg", vertical: true },
+      { name: "Decoraciones Especiales", desc: "Lámina comestible, cake topper, figuras 3D fondant", price: "$4.000 - $7.000", icon: "🎨", image: "decoracion-especial.jpeg", vertical: true },
+      { name: "Tortas con Topper", desc: "Decoración con topper personalizado", price: "$4.500 - $5.000", icon: "🎂", image: "tortas-con-topper.jpeg", vertical: true },
+      { name: "Tortas con Lámina de Azúcar", desc: "Decoración con lámina de azúcar personalizada", price: "$4.500 - $5.000", icon: "🎂", image: "tortas-laminas-azucar.jpeg", vertical: true }
+    ]
+  },
+  promos: {
+    title: "Bocados y Promociones",
+    icon: "🎉",
+    pdf: "Catalogo Bocados y Promociones - DJ.pdf",
+    products: [
+      { name: "Pocos pero Sabrosos", desc: "<strong>Incluye:</strong> 25 canapés, 30 sopaipillas, 24 tapaditos, 25 coctel dulce, 24 pizzetas<br>Para compartir con amigos y familia · Productos frescos y de calidad", price: "$71.900", icon: "🎉", image: "WhatsApp Image 2026-07-13 at 9.21.43 PM.jpeg", vertical: true },
+      { name: "Que no le Falte", desc: "<strong>Incluye:</strong> 36 completo italiano coctel, 36 tacos de pollo, 1 tabla niñ@s dulce celebración, 36 canoas de guacamole, 1 tabla mixta dulce y salada, 40 pinchos (mini brochetas saladas), 36 sandwich de miga ave mayo pimentón<br>Rico · Delicioso · Sabroso", price: "$199.900", icon: "🎊", image: "WhatsApp Image 2026-07-13 at 9.21.43 PM (1).jpeg", vertical: true },
+      { name: "Detodo un Poco", desc: "<strong>Incluye:</strong> 50 sopaipillas, 50 canapé, 50 coctel dulce, 50 chaparrita, 50 tapaditos surtidos, 50 pizzetas<br>De todo un poco para tu evento", price: "$175.000", icon: "🎁", image: "WhatsApp Image 2026-07-13 at 9.21.44 PM.jpeg", vertical: true },
+      { name: "Bocado 1 (25 unid)", desc: "Tapaditos, mini hamburguesa, canapés, empanadas, chaparritas, pizzetas, pinchos, wraps<br>8 variedades disponibles", price: "$13.500", icon: "📦", image: "imagenbocado.jpeg", vertical: true },
+      { name: "Bocado 2 (50 unid)", desc: "Variedad completa de bocados salados para 50 unidades<br>8 variedades disponibles", price: "$27.000", icon: "📦", image: "imagenbocado.jpeg", vertical: true },
+      { name: "Bocado 3 (100 unid)", desc: "Pack grande con todas las variedades<br>8 variedades disponibles", price: "$54.000", icon: "📦", image: "imagenbocado.jpeg", vertical: true },
+      { name: "Bocado 4 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $31.000", icon: "🎁", image: "bocado4-50.jpeg", vertical: true },
+      { name: "Bocados 5 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $31.000", icon: "🎁", image: "bocado5-50.jpeg", vertical: true },
+      { name: "Bocados 6 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $31.000", icon: "🎁", image: "bocado6-50.jpeg", vertical: true },
+      { name: "Bocados 7 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $32.000", icon: "🎁", image: "bocado7-50.jpeg", vertical: true },
+      { name: "Bocados 8 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $32.000", icon: "🎁", image: "bocado8-50.jpeg", vertical: true },
+      { name: "Bocados 9 (50 unid)", desc: "Diferentes combinaciones de 4 variedades", price: "(4 variedades) $32.000", icon: "🎁", image: "bocado9-50.jpeg", vertical: true },
+      { name: "Bocados 10 (65 unid)", desc: "Combinaciones premium con brochetas, churrascos, alitas", price: "$39.900", icon: "🎁", image: "bocado10-65.jpeg", vertical: true },
+      { name: "Bocados 11 (65 unid)", desc: "Combinaciones premium con brochetas, churrascos, alitas", price: "$39.900", icon: "🎁", image: "bocado11-65.jpeg", vertical: true },
+      { name: "Bocados 12 (65 unid)", desc: "Combinaciones premium con brochetas, churrascos, alitas", price: "$39.900", icon: "🎁", image: "bocado12-65.jpeg", vertical: true },
+      { name: "Bocados 13 (65 unid)", desc: "Combinaciones premium con brochetas, churrascos, alitas", price: "$39.900", icon: "🎁", image: "bocado13-65.jpeg", vertical: true },
+      { name: "Bocado 14 Vegano", desc: "Opción vegana: hamburguesa legumbre, soya, empanadas soya, tapaditos palmito palta", price: "$14.000 - $24.500", icon: "🌱", image: "bocado14-vegano.jpeg", vertical: true },
+      { name: "Promo 110 unid (10 pers)", desc: "25 canapés, 25 mini churrascos, 40 sopaipillas, 20 pinchos", price: "$70.000", icon: "🎊", image: "promo-110-unid-10-pers.jpeg", vertical: true },
+      { name: "Promo 174 unid (16 pers)", desc: "50 coctel dulce, 24 cupcakes, 30 sopaipillas, 20 pinchos, 24 tapaditos, 26 chaparritas", price: "$110.000", icon: "🎊", image: "promo-174-unid-16-pers.jpeg", vertical: true },
+      { name: "Promo 352 unid (30 pers)", desc: "50 coctel dulce, 50 canapés, 48 tapaditos, 50 pinchos, 40 sopaipillas, 48 wraps, 34 chaparritas, 32 mini shops", price: "$218.250", icon: "🎊", image: "promo-352-unid-30-pers.jpeg", vertical: true },
+      { name: "Promo 490 unid (45 pers)", desc: "75 coctel dulce, 40 mini sándwich, 40 tapaditos, 50 pinchos, 80 sopaipillas, 80 empanadas, 80 chaparritas, 45 cupcakes", price: "$310.000", icon: "🎊", image: "promo-490-unid-45-pers.jpeg", vertical: true },
+      { name: "Promo 620 unid (60 pers)", desc: "100 coctel dulce, 60 churrascos, 60 tapaditos, 60 pinchos, 60 pizzetas, 120 sopaipillas, 60 chaparritas, 60 canoas, 40 cupcakes", price: "$400.000", icon: "🎊", image: "promo-620-unid-60-pers.jpeg", vertical: true }
+    ]
+  }
+};
+
+/* === CATALOG STATE === */
+let currentView = 'gallery'; // 'gallery' or 'list'
+let currentFilter = null;
+
+/* === HELPER FUNCTION === */
+function formatPrice(price) {
+  if (!price.includes('\n')) {
+    return price;
+  }
+  return price.split('\n').map(line => `<span>${line}</span>`).join('');
+}
+
+/* === CATALOG RENDERING === */
+function renderCatalog(category = null, view = currentView) {
+  const container = document.getElementById('catalogContent');
+  
+  // Add hiding animation to existing items
+  const existingItems = container.querySelectorAll('.catalog-category, .gallery-product-card, .gallery-category-separator');
+  existingItems.forEach(item => item.classList.add('hiding'));
+  
+  setTimeout(() => {
+    container.innerHTML = '';
+    container.className = `catalog-content modo-${view === 'gallery' ? 'galeria' : 'lista'}`;
+    
+    // Si no hay categoría seleccionada, mostrar mensaje
+    if (!category) {
+      container.innerHTML = '<div class="catalog-empty-message">Selecciona una categoría para ver los productos</div>';
+      return;
+    }
+    
+    const categories = [category];
+    
+    if (view === 'gallery') {
+      // Gallery view: flat grid of individual product cards
+      let productIndex = 0;
+      categories.forEach(catKey => {
+        const cat = catalogData[catKey];
+        
+        // Add category separator
+        const separator = document.createElement('div');
+        separator.className = 'gallery-category-separator';
+        separator.innerHTML = `
+          <span class="gallery-cat-icon">${cat.icon}</span>
+          <h3 class="gallery-cat-title">${cat.title}</h3>
+        `;
+        separator.style.gridColumn = '1 / -1';
+        separator.style.opacity = '0';
+        separator.style.transform = 'translateY(20px)';
+        container.appendChild(separator);
+        
+        setTimeout(() => {
+          separator.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          separator.style.opacity = '1';
+          separator.style.transform = 'translateY(0)';
+        }, productIndex * 80);
+        
+        cat.products.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'gallery-product-card';
+          card.dataset.category = catKey;
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          
+          card.innerHTML = `
+            ${p.image 
+              ? `<div class="gallery-card-image ${p.vertical ? 'gallery-card-image-vertical' : ''}" onclick="openLightboxImg('${p.image}')" style="cursor:pointer;"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>`
+              : `<div class="gallery-card-emoji" data-icon="${p.icon}"></div>`
+            }
+            <div class="gallery-card-body">
+              <h4 class="gallery-card-title">${p.name}</h4>
+              <div class="gallery-card-desc">${p.desc}</div>
+              <div class="gallery-card-footer">
+                <span class="gallery-card-price">${formatPrice(p.price)}</span>
+                <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20cotizar%20${encodeURIComponent(p.name)}" target="_blank" class="gallery-card-btn">💬 Cotizar</a>
+              </div>
+            </div>
+          `;
+          
+          container.appendChild(card);
+          
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, productIndex * 80);
+          
+          productIndex++;
+        });
+      });
+    } else {
+      // List view: accordion categories
+      categories.forEach((catKey, index) => {
+        const cat = catalogData[catKey];
+        const categoryEl = document.createElement('div');
+        categoryEl.className = 'catalog-category';
+        categoryEl.dataset.category = catKey;
+        categoryEl.style.opacity = '0';
+        categoryEl.style.transform = 'translateY(20px)';
+        
+        categoryEl.innerHTML = `
+          <div class="category-header" onclick="toggleCategory('${catKey}')">
+            <div style="display:flex;align-items:center;">
+              <span class="category-icon">${cat.icon}</span>
+              <h3>${cat.title}</h3>
+            </div>
+            <span class="category-toggle" id="toggle-${catKey}">▼</span>
+          </div>
+          <div class="category-products" id="products-${catKey}">
+            <div class="product-list">
+              ${cat.products.map(p => `
+                <div class="product-item">
+                  ${p.image 
+                    ? `<div class="product-image ${p.vertical ? 'product-image-vertical' : ''}" onclick="openLightboxImg('${p.image}')" style="cursor:pointer;"><img src="${p.image}" alt="${p.name}"></div>` 
+                    : `<div class="product-image product-image-emoji" data-icon="${p.icon}"></div>`
+                  }
+                  <div class="product-item-content">
+                    <h4>${p.name}</h4>
+                    <div class="product-item-desc">${p.desc}</div>
+                    <div class="product-item-footer">
+                      <div class="product-price-range">${formatPrice(p.price)}</div>
+                      <a href="https://wa.me/56994865001?text=Hola%2C%20quiero%20cotizar%20${encodeURIComponent(p.name)}" target="_blank" class="btn-whatsapp">
+                        💬 Consultar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            <a href="${cat.pdf}" target="_blank" class="category-pdf-btn">
+              📄 Ver Catálogo Completo PDF
+            </a>
+          </div>
+        `;
+        
+        container.appendChild(categoryEl);
+        
+        setTimeout(() => {
+          categoryEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          categoryEl.style.opacity = '1';
+          categoryEl.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    }
+  }, 300);
+}
+
+function toggleCategory(catKey) {
+  const products = document.getElementById(`products-${catKey}`);
+  const toggle = document.getElementById(`toggle-${catKey}`);
+  products.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+/* === VIEW TOGGLE === */
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentView = btn.dataset.view;
+    renderCatalog(currentFilter, currentView);
+  });
+});
+
+/* === FILTER BUTTONS === */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.category;
+    renderCatalog(currentFilter, currentView);
+  });
+});
+
+// Initial render
+renderCatalog(null, 'gallery');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+
+<!-- MuleRun preview missing-image fallback -->
+<script>
+(function(){
+  function labelFromSrc(src){
+    try { src = decodeURIComponent(String(src||'').split('/').pop().split('?')[0]); } catch(e) {}
+    return String(src||'imagen').replace(/\.(png|jpe?g|webp|gif)$/i,'').replace(/[-_]+/g,' ').replace(/\b\w/g, m => m.toUpperCase());
+  }
+  function svgPlaceholder(label){
+    const safe = String(label).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650">
+        <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff8f2"/><stop offset="1" stop-color="#ffe0ec"/></linearGradient></defs>
+        <rect width="900" height="650" fill="url(#g)"/>
+        <circle cx="760" cy="80" r="130" fill="#ffb84d" opacity=".18"/>
+        <circle cx="110" cy="560" r="170" fill="#ff6fae" opacity=".14"/>
+        <text x="50%" y="48%" text-anchor="middle" fill="#6B4226" font-family="Poppins, Arial, sans-serif" font-size="42" font-weight="800">${safe}</text>
+        <text x="50%" y="57%" text-anchor="middle" fill="#9a7b6a" font-family="Nunito Sans, Arial, sans-serif" font-size="24">Imagen no adjunta en esta previsualización</text>
+      </svg>`
+    );
+  }
+  function wire(img){
+    if (img.dataset.mulerunFallback) return;
+    img.dataset.mulerunFallback = '1';
+    img.addEventListener('error', function(){
+      if (this.dataset.mulerunMissingApplied) return;
+      this.dataset.mulerunMissingApplied = '1';
+      this.src = svgPlaceholder(this.alt || labelFromSrc(this.getAttribute('src')));
+    });
+  }
+  document.querySelectorAll('img').forEach(wire);
+  new MutationObserver(muts => muts.forEach(m => m.addedNodes.forEach(n => {
+    if (n.nodeType !== 1) return;
+    if (n.tagName === 'IMG') wire(n);
+    n.querySelectorAll && n.querySelectorAll('img').forEach(wire);
+  }))).observe(document.documentElement, {childList:true, subtree:true});
+})();
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
